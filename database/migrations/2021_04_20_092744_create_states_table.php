@@ -21,10 +21,14 @@ class CreateStatesTable extends Migration
             $table->unsignedBigInteger('prev_id')->nullable();
             $table->unsignedBigInteger('next_id')->nullable();
             $table->unsignedInteger('order');
-            $table->string('state_type')->default('PROCESS');
+            $table->boolean('is_conditional')->default(false);
             $table->boolean('is_checkpoint')->default(false);
-            $table->string('flow_name');
+            $table->unsignedBigInteger('flow_id');
             $table->timestamps();
+
+            $table->foreign('flow_id')->references('id')->on('flows')->onDelete('cascade');
+            $table->index(['alias','flow_name']);
+            $table->unique(['alias','flow_name']);
         });
     }
 
