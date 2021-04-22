@@ -16,7 +16,8 @@ class CreateFlowsTable extends Migration
         Schema::create('flows', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->boolean('is_independent')->default('true');
+            $table->boolean('is_independent')->default(true);
+            $table->boolean('is_main')->default(false);
             $table->timestamps();
         });
     }

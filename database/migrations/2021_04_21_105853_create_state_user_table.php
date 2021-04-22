@@ -18,6 +18,7 @@ class CreateStateUserTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('flow_id');
+            $table->boolean('is_main_flow')->default(false);
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->foreign('flow_id')->references('id')->on('flows')->onDelete('cascade');
             $table->index(['user_id']);

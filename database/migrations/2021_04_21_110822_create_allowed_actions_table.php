@@ -15,6 +15,9 @@ class CreateAllowedActionsTable extends Migration
     {
         Schema::create('allowed_actions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('allowed_state_id');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->timestamps();
         });
     }
