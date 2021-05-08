@@ -11,7 +11,7 @@ class RegFlow extends bFlow
 
     public $flowArray = [
         'diet/type' => [
-            'allowed_checkpoints' => [],
+            'allowed_checkpoints' => ['REG'],
             'is_checkpoint' => true,
             'alias' => 'REG',
             'description' => 'صفحه انتخاب رژیم',

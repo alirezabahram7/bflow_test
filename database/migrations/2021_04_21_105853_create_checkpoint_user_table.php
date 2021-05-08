@@ -16,6 +16,7 @@ class CreateCheckpointUserTable extends Migration
         Schema::create('checkpoint_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('previous_checkpoint')->nullable();
             $table->string('checkpoint');
             $table->string('flow_name');
             $table->boolean('is_main_flow')->default(false);

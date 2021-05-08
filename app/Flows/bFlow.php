@@ -9,15 +9,9 @@ use Illuminate\Support\Str;
 class bFlow
 {
     public $prefix;
-    public $flowArray = [];
-
-//    public function getNextAndPrev($stateId)
-//    {
-//        // اگر تابعش موجود بود برو
-//        // اگر نه به عنوان رشته برگردون
-//        //قبلی رو چه کنم؟
-//        //
-//    }
+    public static $flowArray = [];
+    public $isMainFlow = true;
+    public $isDependantFlow = false;
 
     public function __construct($prefix = null)
     {
@@ -75,7 +69,6 @@ class bFlow
     public function getState($state)
     {
         //check if its method exists
-
         if (method_exists($this, $state)) {
             return $this->callMethod($state);
         }
@@ -109,7 +102,6 @@ class bFlow
         $functionName = $functionPrefix . $this->kebabToCamelCase($state, true);
         return $this->$functionName();
     }
-    //add general methods to evaluate all user data to estimate his real state : like check flow and check visit status
 
     /**
      * @param $string
@@ -125,4 +117,7 @@ class bFlow
         }
         return $str;
     }
+
+    //add general methods to evaluate all user data to estimate his real state : like check flow and check visit status
+
 }
